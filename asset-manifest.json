@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/job-poster/static/css/main.1e1bf8e2.css",
+    "main.js": "/job-poster/static/js/main.7967124c.js",
+    "static/media/main.svg": "/job-poster/static/media/main.17b316de742b3a1202078c5ae18c8261.svg",
+    "static/media/not-found.svg": "/job-poster/static/media/not-found.5cfa24fa5e3ca7dffe02f358358ea9df.svg",
+    "static/media/logo.svg": "/job-poster/static/media/logo.35bb8e1d9b5745af32ff148cbee51dfa.svg",
+    "index.html": "/job-poster/index.html",
+    "main.1e1bf8e2.css.map": "/job-poster/static/css/main.1e1bf8e2.css.map",
+    "main.7967124c.js.map": "/job-poster/static/js/main.7967124c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1e1bf8e2.css",
+    "static/js/main.7967124c.js"
+  ]
+}
