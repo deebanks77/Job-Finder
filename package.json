@@ -1,6 +1,6 @@
 {
   "homepage": "http://deebanks77.github.io/job-poster",
-  "name": "job-finder",
+  "name": "job-poster",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
