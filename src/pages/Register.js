@@ -3,7 +3,9 @@ import { Logo, FormRow } from "../components";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 
-// redux toolkit and useNavigate later
+import { loginUser, registerUser } from "../features/user/userSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   name: "",
@@ -18,7 +20,10 @@ const initialState = {
 function Register() {
   const [values, setValues] = useState(initialState);
 
-  // redux toolkit and useNavigate later
+  const dispatch = useDispatch();
+  const { isLoading, user } = useSelector((state) => state.user);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -30,14 +35,30 @@ function Register() {
     e.preventDefault();
     const { name, email, password, isMember } = values;
 
+    // console.log(password);
+
     if (!email || !password || (!isMember && !name)) {
       toast.error("please fill out the fields");
+      return;
     }
+    if (isMember) {
+      dispatch(loginUser({ email: email, password: password }));
+      return;
+    }
+    dispatch(registerUser({ name, email, password }));
   };
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+    }
+  }, [user]);
 
   return (
     <Wrapper className="full-page">
@@ -71,8 +92,21 @@ function Register() {
           handleChange={handleChange}
         />
 
-        <button type="submit" className="btn btn-block">
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
           submit
+        </button>
+        {/* Demo login button */}
+        <button
+          type="button"
+          className="btn btn-block btn-hipster"
+          disabled={isLoading}
+          onClick={() => {
+            dispatch(
+              loginUser({ email: "testUser@test.com", password: "secret" })
+            );
+          }}
+        >
+          {isLoading ? "loading..." : "demo"}
         </button>
 
         {/* toggle button */}
